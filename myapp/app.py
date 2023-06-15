@@ -24,8 +24,10 @@ def calculate():
 
     if request.method == 'POST': 
       lat1 = float(request.form.get('lat1'))
-      lat2 = float(request.form.get('lat2'))
       lon1 = float(request.form.get('lon1'))
+      lat2 = float(request.form.get('lat2'))
       lon2 = float(request.form.get('lon2'))
       distance = calculate_distance(lat1, lon1, lat2, lon2)
-    return render_template("index.html", distance=distance)
+
+    distance_with_units = f"{distance} km"
+    return render_template("index.html", distance=distance_with_units)

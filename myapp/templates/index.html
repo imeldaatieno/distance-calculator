@@ -1,16 +1,19 @@
 <html>
+  <head>
+    <h>Distance Calculator</h>
+  </head>
   <body>
     <form action="/" method="POST">
     Point A(°)
     <input type="text" name="lat1">
-    <input type="text" name="lat2"><br>
+    <input type="text" name="lon1"><br>
     Point B(°)
-    <input type="text" name="lon1">
+    <input type="text" name="lat2">
     <input type="text" name="lon2"><br>
     <button type="submit" value="submit">Calculate</button>
     </form>
     {% if distance %}
-    <p>The distance is {{distance}}</p>
+    <p>Distance: {{distance}}</p>
     {% endif %}
   </body>
 </html>
