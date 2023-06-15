@@ -1,11 +1,16 @@
 <html>
   <body>
-    <form action"/" method="POST",
-    Latitude(°)
-    <input type="text" name="Latitude"><br>
-    Longitude(°)
-    <input type="text" name="Longitude"><br>
-    <button type="submit" value="submit",Calculate /button>
+    <form action="/" method="POST">
+    Point A(°)
+    <input type="text" name="lat1">
+    <input type="text" name="lat2"><br>
+    Point B(°)
+    <input type="text" name="lon1">
+    <input type="text" name="lon2"><br>
+    <button type="submit" value="submit">Calculate</button>
     </form>
+    {% if distance %}
+    <p>The distance is {{distance}}</p>
+    {% endif %}
   </body>
 </html>
