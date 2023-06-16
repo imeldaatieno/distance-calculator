@@ -31,3 +31,4 @@ def calculate():
 
     distance_with_units = f"{distance} km"
     return render_template("index.html", distance=distance_with_units)
+    return render_template("map.html")
