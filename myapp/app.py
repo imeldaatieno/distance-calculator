@@ -4,10 +4,11 @@ import math
 app = Flask(__name__)
 
 def calculate_distance(lat1, lon1, lat2, lon2):
-  lat1_rad = math.radians(lat1)
-  lon1_rad = math.radians(lon1)
-  lat2_rad = math.radians(lat2)
-  lon2_rad = math.radians(lon2)
+
+  lat1_rad = math.radians(float(lat1))
+  lon1_rad = math.radians(float(lon1))
+  lat2_rad = math.radians(float(lat2))
+  lon2_rad = math.radians(float(lon2))
 
   dlon = lon2_rad - lon1_rad
   dlat = lat2_rad - lat1_rad
@@ -23,12 +24,16 @@ def calculate():
     distance = ""
 
     if request.method == 'POST': 
-      lat1 = float(request.form.get('lat1'))
-      lon1 = float(request.form.get('lon1'))
-      lat2 = float(request.form.get('lat2'))
-      lon2 = float(request.form.get('lon2'))
-      distance = calculate_distance(lat1, lon1, lat2, lon2)
+      pointA = request.form.get('pointA')
+      pointB = request.form.get('pointB')
+      latA, lonA = map(float, pointA.split(','))
+      latB, lonB = map(float, pointB.split(','))
+      distance = calculate_distance(latA, lonA, latB, lonB)
+      distance = "{:.2f}".format(distance)
 
     distance_with_units = f"{distance} km"
     return render_template("index.html", distance=distance_with_units)
-    return render_template("map.html")
+    return render_template("maps.html")
+
+if __name__ == '__main__':
+  app.run()
